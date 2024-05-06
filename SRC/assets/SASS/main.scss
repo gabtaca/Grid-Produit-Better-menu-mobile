@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*Animations*/
+@keyframes wobble-hor-bottom {
+0%,
+100% {
+    -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+}
+15% {
+    -webkit-transform: translateX(-30px) rotate(-6deg);
+        transform: translateX(-30px) rotate(-6deg);
+}
+30% {
+    -webkit-transform: translateX(15px) rotate(6deg);
+        transform: translateX(15px) rotate(6deg);
+}
+45% {
+    -webkit-transform: translateX(-15px) rotate(-3.6deg);
+        transform: translateX(-15px) rotate(-3.6deg);
+}
+60% {
+    -webkit-transform: translateX(9px) rotate(2.4deg);
+        transform: translateX(9px) rotate(2.4deg);
+}
+75% {
+    -webkit-transform: translateX(-6px) rotate(-1.2deg);
+        transform: translateX(-6px) rotate(-1.2deg);
+}
+}
+
+
+
+/*Variables couleurs */
+$color_primary:rgb(198, 198, 248) ;
+$color_secondary: rgb(235, 245, 255);
+$color_bckgrnd:rgb(191, 218, 248);
+$bnt_color_01: rgb(33, 142, 231);
+$btn_color_text: white;
+
+/*Variable interpolation*/
+$mobile-size: 768px;
+$mobile-up: "(min-width: #{$mobile-size})";
+$mobile-down: "(max-width: #{$mobile-size})";
+
+$desktop-size: 1536px;
+$desktop-up: "(min-width: #{$desktop-size})";
+$desktop-down: "(max-width: #{$desktop-size})";
+
+
+body{
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    background-color: rgb(173, 173, 173);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    background-color: $color_primary;
+    width: 100%;
+    align-content: space-evenly;
+    flex-direction: column;
+    box-shadow: -1px 36px 38px 9px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px 36px 38px 9px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 36px 38px 9px rgba(0,0,0,0.75);
+    -webkit-border-top-left-radius: 30px;
+    -webkit-border-top-right-radius: 30px;
+    -moz-border-radius-topleft: 30px;
+    -moz-border-radius-topright: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom: 10px double #000000;
+    position: relative;
+    .logo{
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        justify-content: space-evenly;
+    }
+    .logo__img{
+        max-width: 5rem;
+        height: auto;
+        padding: 1em 1em 1em 0;
+    }
+    h1{
+        display: flex;
+        align-items: center;
+        font-family: "Poiret One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        margin: 0;
+    }
+    .dropdown{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    nav{
+        display: flex;
+        position: absolute;
+        right: 0;
+        width: 100vw;
+        padding-top: 15px;
+        justify-content: center;
+        @media #{$mobile-up} {
+            display: none;
+        }
+        .list__burger{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            max-width: 100%;
+            gap: 0.4rem;
+            color: $btn_color_text;
+            background-color: $bnt_color_01;
+            padding: 0.4rem;
+            border-radius: 30px;
+            border: solid 2px $btn_color_text;
+            font-family: "Saira Semi Condensed", sans-serif;
+            font-weight: 100;
+            font-style: normal;
+            list-style: none;
+            z-index: 5;
+        }
+    }
+    .drop__btn-burger{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+        @media #{$mobile-up} {
+            display: none;
+        }
+        .burger__img{
+            display: flex;
+            width: 3rem;
+        }
+    }
+    .menu__barre-header{
+        display: none;
+        width: 100%;
+        max-width: 100%;
+        @media #{$mobile-up} {
+            display: flex;
+            justify-content: space-evenly;
+            visibility: visible;
+        }
+        ul{
+            display: flex;
+            width: 100%;
+            max-width: 100%;
+            list-style: none;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 0;
+            padding-top: 10px;
+            padding-left: 0;
+            cursor: pointer;
+        }
+        li{
+            display: flex;
+            align-items: center;
+            color: $btn_color_text;
+            background-color: $bnt_color_01;
+            padding: 0.4rem;
+            border-radius: 30px;
+            border: solid 2px $btn_color_text;
+            font-family: "Saira Semi Condensed", sans-serif;
+            font-weight: 100;
+            font-style: normal;
+            .li__img{
+                width: 30px;
+                height: auto;
+            }
+        }
+    }
+}
+
+.menu__veil {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2; /* Lower z-index to be behind the dropdown menu */
+}
+
+
+.buddha__main{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    .main__img{
+        display: flex;
+        background-color: $color_bckgrnd;
+        height: 400px;
+        background-repeat: repeat-x;
+        background-image: url("/SRC/assets/images/giphy.gif");
+        width: 100%;
+        
+        .buddha__div{
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+            -webkit-animation: wobble-hor-bottom 5s infinite both;
+            animation: wobble-hor-bottom 5s infinite both;
+        }
+
+        .buddha__img{
+            display: flex;
+            width: 150px;
+            height: auto;
+            @media #{$mobile-up} {
+                width: 250px;
+            }
+        }
+    }
+}
+
+.grid__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: $mobile-size) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .product__ttl {
+        font-family: "Poiret One", sans-serif;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .product__list {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        .product__list-item {
+            display: flex;
+            width: 90%;
+        
+            @media (min-width: $mobile-size) {
+                width: 45%;
+            }
+        
+            @media (min-width: $desktop-size) {
+                width: 30%;
+            }
+        
+            & > a {
+                display: flex;
+                justify-content: center;
+                padding: 15px;
+                cursor: pointer;
+        
+                .grid__img {
+                    display: flex;
+                    max-width: 100%;
+                    padding: 15px;
+                    width: 90%;
+                    border-radius: 30px;
+                    transition: box-shadow 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        
+                    &:hover {
+                        -webkit-box-shadow: inset 0 0 14px 0px rgba(0, 0, 0, 0.5);
+                        box-shadow: inset 0 0 14px 0px rgba(0, 0, 0, 0.5);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+footer{
+    background-color: $color_primary;
+    height: 400px;
+    width: 100%;
+    filter: sepia(40%);
+    border-top: 10px double #000000;
+    -webkit-border-bottom-right-radius: 30px;
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomright: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+@media screen and (min-width: 768px) {
+    header{
+        border-bottom: none;
+        filter: sepia(40%);
+            ul{
+        visibility: visible;
+    }
+    }
+    .menu__burger{
+        visibility: hidden;
+    }
+    footer{
+        filter: sepia(0%);
+        border-top: none;
+    }
+} 
+
